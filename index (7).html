@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Islam Hammia – Développeur backend Java / Python</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6FF; --bg2:#E3EAFB; --card:rgba(255,255,255,.72); --ink:#0E1630; --muted:#4A5675;
+  --line:rgba(30,50,120,.16); --a:#0B63F0; --b:#7A3CF0; --glow:rgba(11,99,240,.20); --grid:rgba(30,50,120,.07);
+  box-sizing:border-box; color-scheme:light;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#070B1D; --bg2:#0D1433; --card:rgba(20,28,66,.55); --ink:#EAF0FF; --muted:#9AA8D0;
+    --line:rgba(120,150,255,.22); --a:#47E0FF; --b:#A887FF; --glow:rgba(71,224,255,.18); --grid:rgba(120,150,255,.08); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#070B1D; --bg2:#0D1433; --card:rgba(20,28,66,.55); --ink:#EAF0FF; --muted:#9AA8D0;
+  --line:rgba(120,150,255,.22); --a:#47E0FF; --b:#A887FF; --glow:rgba(71,224,255,.18); --grid:rgba(120,150,255,.08); color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.02rem/1.7 "Sora",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(60rem 36rem at 85% -10%,var(--glow),transparent 60%),
+    radial-gradient(46rem 30rem at -10% 40%,rgba(122,60,240,.14),transparent 60%),
+    linear-gradient(var(--grid) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/44px 44px,
+    var(--bg);
+  -webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+a{color:var(--a);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:8px}
+.wrap{max-width:66rem;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem)}
+.top{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0}
+.logo{font:500 .9rem "JetBrains Mono",ui-monospace,Menlo,monospace;color:var(--muted)}
+.theme{background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;font:500 .85rem "Sora",sans-serif;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.theme:hover{border-color:var(--a)}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding:clamp(1.5rem,5vw,4rem) 0 clamp(3rem,7vw,5.5rem)}
+h1{font-size:clamp(2.7rem,8.5vw,5rem);line-height:1;letter-spacing:-.035em;font-weight:700;margin:0 0 1rem;
+  background:linear-gradient(100deg,var(--ink) 10%,var(--a) 55%,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-size:clamp(1.1rem,2.6vw,1.4rem);font-weight:500;margin:0 0 1rem}
+.lead{color:var(--muted);max-width:34rem;margin:0 0 1.5rem}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.75rem;padding:0;list-style:none}
+.pills li{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:.3rem .85rem;font-size:.85rem;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:.95rem;padding:.8rem 1.4rem;border-radius:12px;transition:transform .15s,box-shadow .15s}
+.btn.main{background:linear-gradient(100deg,var(--a),var(--b));color:#fff;box-shadow:0 8px 28px -8px var(--a)}
+.btn.main:hover{transform:translateY(-2px);box-shadow:0 12px 34px -8px var(--a)}
+.btn.ghost{color:var(--ink);border:1px solid var(--line);background:var(--card)}
+.btn.ghost:hover{border-color:var(--a)}
+.term{background:#050816;border:1px solid rgba(120,150,255,.28);border-radius:16px;overflow:hidden;box-shadow:0 30px 70px -30px var(--a),0 0 0 1px rgba(255,255,255,.03) inset;color:#D8E3FF}
+.term .bar{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.7rem 1rem;border-bottom:1px solid rgba(120,150,255,.2);font:500 .8rem "JetBrains Mono",ui-monospace,Menlo,monospace;color:#8FA2D8}
+.term .ok{color:#6CF2C2}
+.term pre{margin:0;padding:1.1rem 1rem 1.3rem;overflow-x:auto;font:400 .86rem/1.8 "JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.k{color:#7FD6FF}.s{color:#FFC98B}.n{color:#D9A8FF}
+.cur{display:inline-block;width:.55em;height:1.05em;background:#6CF2C2;vertical-align:-.2em}
+@media (prefers-reduced-motion:no-preference){
+  .ln{display:block;opacity:0;animation:in .35s forwards}
+  .ln:nth-child(1){animation-delay:.2s}.ln:nth-child(2){animation-delay:.55s}.ln:nth-child(3){animation-delay:.9s}
+  .ln:nth-child(4){animation-delay:1.25s}.ln:nth-child(5){animation-delay:1.6s}.ln:nth-child(6){animation-delay:1.95s}
+  .ln:nth-child(7){animation-delay:2.3s}.ln:nth-child(8){animation-delay:2.65s}
+  .cur{animation:blink 1s steps(2) infinite}
+}
+@keyframes in{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+.ln{display:block}
+section{padding:0 0 clamp(3rem,6vw,4.5rem)}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:-.02em;margin:0 0 1.5rem;font-weight:700;display:flex;align-items:center;gap:1rem}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.3rem 1.4rem;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.card.wide{grid-column:1/-1;border-color:var(--a)}
+.card h3{margin:0 0 .8rem;font-size:1rem;font-weight:600;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);border-radius:10px;padding:.3rem .8rem;font:500 .85rem "JetBrains Mono",ui-monospace,Menlo,monospace;transition:border-color .15s,box-shadow .15s}
+.chips li:hover{border-color:var(--a);box-shadow:0 0 18px -4px var(--a)}
+.chips .core{font-size:1rem;padding:.45rem 1rem;border-color:var(--a);background:linear-gradient(100deg,var(--glow),transparent)}
+.tl{position:relative;padding-left:2rem}
+.tl::before{content:"";position:absolute;left:.45rem;top:.6rem;bottom:0;width:2px;background:linear-gradient(var(--a),var(--b),transparent)}
+.tl::after{content:"";position:absolute;left:0;top:.45rem;width:.95rem;height:.95rem;border-radius:50%;background:var(--bg);border:3px solid var(--a);box-shadow:0 0 16px var(--a)}
+.tl h3{margin:0;font-size:1.25rem}
+.tl .meta{color:var(--a);font:500 .85rem "JetBrains Mono",ui-monospace,Menlo,monospace;margin:.2rem 0 1rem}
+.tl ul{margin:0;padding-left:1.1rem;max-width:44rem}
+.tl li{margin-bottom:.5rem;color:var(--muted)}
+.tl li::marker{color:var(--a)}
+.two{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.two h3{margin:0 0 .2rem;font-size:1.1rem}
+.two p{margin:0;color:var(--muted)}
+.langs{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.langs li{display:flex;justify-content:space-between;gap:1rem}
+.langs span{color:var(--muted)}
+.contact{text-align:center;padding:clamp(2rem,5vw,3.5rem) 1.5rem;border:1px solid var(--a);border-radius:24px;background:radial-gradient(40rem 14rem at 50% 0,var(--glow),transparent 70%),var(--card);box-shadow:0 30px 80px -40px var(--a)}
+.contact h2{justify-content:center;margin-bottom:.6rem}
+.contact h2::after{display:none}
+.contact p{color:var(--muted);margin:0 0 1.5rem}
+.contact .btns{justify-content:center}
+footer{padding:2rem 0 3rem;text-align:center;color:var(--muted);font-size:.85rem}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
+  .grid,.two{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="top">
+    <span class="logo">islam.hammia</span>
+    <button class="theme" id="theme" type="button" aria-label="Changer de thème">Thème clair / sombre</button>
+  </div>
+
+  <header class="hero">
+    <div>
+      <h1>Islam Hammia</h1>
+      <p class="role">Développeur backend Java / Python</p>
+      <p class="lead">Je conçois des API REST, des microservices et des traitements par lots fiables, du code source jusqu’au déploiement.</p>
+      <ul class="pills">
+        <li>Tipaza, Algérie</li>
+        <li>2 ans d’expérience</li>
+        <li>Master 2</li>
+      </ul>
+      <div class="btns">
+        <a class="btn main" href="#contact">Me contacter</a>
+        <a class="btn ghost" href="#competences">Voir les compétences</a>
+      </div>
+    </div>
+    <div class="term" role="img" aria-label="Résumé du profil sous forme de réponse d’API : Islam Hammia, développeur backend, 2 ans d’expérience, Spring Boot, Spring Batch, Python, PostgreSQL, Docker, Agile / Scrum.">
+      <div class="bar"><span>GET /developpeurs/islam-hammia</span><span class="ok">200 OK</span></div>
+<pre aria-hidden="true"><code><span class="ln">{</span><span class="ln">  <span class="k">"nom"</span>: <span class="s">"Islam Hammia"</span>,</span><span class="ln">  <span class="k">"poste"</span>: <span class="s">"Développeur backend"</span>,</span><span class="ln">  <span class="k">"experience_ans"</span>: <span class="n">2</span>,</span><span class="ln">  <span class="k">"stack"</span>: [<span class="s">"Spring Boot"</span>, <span class="s">"Spring Batch"</span>,</span><span class="ln">            <span class="s">"Python"</span>, <span class="s">"PostgreSQL"</span>, <span class="s">"Docker"</span>],</span><span class="ln">  <span class="k">"methodologie"</span>: <span class="s">"Agile / Scrum"</span></span><span class="ln">}<span class="cur"></span></span></code></pre>
+    </div>
+  </header>
+
+  <section id="competences">
+    <h2>Compétences</h2>
+    <div class="grid">
+      <div class="card wide">
+        <h3>Langages et frameworks</h3>
+        <ul class="chips">
+          <li class="core">Java</li><li class="core">Python</li><li class="core">Spring Boot</li><li class="core">Spring Batch</li>
+          <li>Frameworks Python selon le projet</li>
+        </ul>
+      </div>
+      <div class="card"><h3>Architecture</h3>
+        <ul class="chips"><li>API REST</li><li>Microservices</li><li>Services applicatifs</li></ul></div>
+      <div class="card"><h3>Bases de données</h3>
+        <ul class="chips"><li>SQL</li><li>PostgreSQL</li><li>Oracle ou équivalent</li></ul></div>
+      <div class="card"><h3>Outillage</h3>
+        <ul class="chips"><li>Git</li><li>Maven</li><li>Jenkins</li><li>SonarQube</li><li>Docker</li></ul></div>
+      <div class="card"><h3>Méthodologie</h3>
+        <ul class="chips"><li>Agile / Scrum</li></ul></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Expérience</h2>
+    <div class="tl">
+      <h3>Développeur Full Stack, SARLTEPE (Saïda)</h3>
+      <p class="meta">mai 2024 → aujourd’hui</p>
+      <ul>
+        <li>Conception et développement d’API REST avec Spring Boot.</li>
+        <li>Mise en place de traitements par lots avec Spring Batch.</li>
+        <li>Optimisation de requêtes SQL sur PostgreSQL / Oracle.</li>
+        <li>Intégration continue avec Jenkins, Maven et SonarQube ; conteneurisation avec Docker.</li>
+        <li>Participation aux cérémonies Agile / Scrum.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="parcours">
+    <h2>Formation et langues</h2>
+    <div class="two">
+      <div class="card"><h3>Master 2</h3><p>Université Saad Dahleb, Blida</p><p>2016 – 2022</p></div>
+      <div class="card">
+        <ul class="langs">
+          <li>Français <span>Très bien</span></li>
+          <li>Anglais <span>Très bien</span></li>
+          <li>Arabe <span>Très bien</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <h2>Travaillons ensemble</h2>
+      <p>Un projet backend, une API à concevoir ou une équipe à rejoindre ? Écrivez-moi.</p>
+      <div class="btns">
+        <a class="btn main" href="mailto:islam.hammia1995@gmail.com">islam.hammia1995@gmail.com</a>
+        <a class="btn ghost" href="tel:+213660059568">+213 660 05 95 68</a>
+      </div>
+    </div>
+  </section>
+  <footer>© 2026 Islam Hammia · Tipaza, Algérie</footer>
+</div>
+<script>
+(function(){
+  var r=document.documentElement,b=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);}catch(e){}
+  b.addEventListener('click',function(){
+    var dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var n=dark?'light':'dark';r.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
